@@ -23,7 +23,7 @@
   <!-- 集成spring监听器 -->
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>classpath*:spring/spring-*.xml</param-value>
+    <param-value>classpath*:spring-*.xml</param-value>
   </context-param>
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -46,6 +46,8 @@
     <servlet-name>SpringMVC</servlet-name>
     <!-- 此处可以可以配置成*.do，对应struts的后缀习惯 -->
     <url-pattern>/</url-pattern>
+    <url-pattern>/swagger/*</url-pattern>
+    <url-pattern>/api-docs</url-pattern>
   </servlet-mapping>
 
 
