@@ -1,20 +1,45 @@
 package com.zixue.ssm.controller;
 
 
+import com.alibaba.fastjson.JSONObject;
+import com.zixue.ssm.config.JedisPoolUtils;
+import com.zixue.ssm.service.DemoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Api(value = "测试类")
 public class DemoController {
 
+
+    @Autowired
+    DemoService demoService;
+
     @RequestMapping("/demo")
-//    @ResponseBody
-@ApiOperation(value = "demo",notes = "这是一个测试接口",httpMethod = "GET")
+    @ApiOperation(value = "demo",notes = "这是一个测试接口",httpMethod = "GET")
     public  String demo(){
+
         return "this is demo()";
     }
+
+
+    @RequestMapping("/setRedis")
+    @ApiOperation(value = "设置redis值",notes = "",httpMethod = "POST")
+    public  String setRedis(@RequestBody JSONObject jsonObject){
+
+        Object o;
+        JedisPoolUtils.getJedis().set(jsonObject.getString("key"),jsonObject.getString("value"));
+        return "this is demo()";
+    }
+
+
+    @RequestMapping("/getRedis")
+    @ApiOperation(value = "获取redis值",notes = "",httpMethod = "POST")
+    public  String getRedis(@RequestBody  JSONObject jsonObject){
+
+        return JedisPoolUtils.getJedis().get(jsonObject.getString("key"));
+    }
+
 }

@@ -24,7 +24,7 @@
     <commons-lang.version>2.6</commons-lang.version>
     <commons-io.version>2.5</commons-io.version>
     <javassist.version>3.12.1.GA</javassist.version>
-    <fastjson.version>1.2.11</fastjson.version>
+    <fastjson.version>1.2.70</fastjson.version>
     <spring.version>4.1.5.RELEASE</spring.version>
     <mybatis-spring.version>1.2.2</mybatis-spring.version>
     <aspectjrt.version>1.5.4</aspectjrt.version>
@@ -275,6 +275,17 @@
       <groupId>com.github.xiaoymin</groupId>
       <artifactId>swagger-bootstrap-ui</artifactId>
       <version>1.8.1</version>
+    </dependency>
+    <!--redis -->
+    <dependency>
+      <groupId>redis.clients</groupId>
+      <artifactId>jedis</artifactId>
+      <version>3.3.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-redis</artifactId>
+      <version>2.3.3.RELEASE</version>
     </dependency>
 
 
